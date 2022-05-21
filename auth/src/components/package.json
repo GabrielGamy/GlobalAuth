@@ -1,0 +1,30 @@
+{
+    "name": "@gabrielgamy/react-firebase-authentication",
+    "version": "1.0.1",
+    "description": "A generic secure react authentication component using Firebase auth",
+    "main": "Login.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/GabrielGamy/react-firebase-authentication.git"
+    },
+    "keywords": [
+        "react",
+        "auth",
+        "authentication",
+        "firebase",
+        "auth"
+    ],
+    "author": "gabrielgamy",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/GabrielGamy/react-firebase-authentication/issues"
+    },
+    "homepage": "https://github.com/GabrielGamy/react-firebase-authentication#readme",
+    "peerDependencies": {
+        "react": "^18.1.0",
+        "react-dom": "^18.1.0"
+    }
+}

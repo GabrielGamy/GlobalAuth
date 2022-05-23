@@ -18,8 +18,20 @@ function App() {
 
     return (
         <div >
-            {showLogin && <LoginPage title="Login to your account" appName="App Name" onCreateAccountBtnClick={onCreateAccountBtnClick} />}
-            {showSignUp && <SignUpPage title="Create a new account" appName="App Name" onLoginBtnClick={onLoginBtnClick} />}
+            {
+                showLogin &&
+                <LoginPage
+                    title="Login to your account"
+                    appName="App Name"
+                    onCreateAccountBtnClick={onCreateAccountBtnClick} />
+            }
+            {
+                showSignUp &&
+                <SignUpPage
+                    title="Create a new account"
+                    appName="App Name"
+                    onLoginBtnClick={onLoginBtnClick} />
+            }
         </div>
     );
 }

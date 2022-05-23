@@ -101,6 +101,7 @@ SignUpPage.propTypes = {
 ```
 
 ### How to use the login and sign-up components?
+
 ```
 import LoginPage from "./components/Login";
 import SignUpPage from "./components/SignUp";
@@ -122,11 +123,25 @@ function App() {
 
     return (
         <div >
-            {showLogin && <LoginPage title="Login to your account" appName="App Name" onCreateAccountBtnClick={onCreateAccountBtnClick} />}
-            {showSignUp && <SignUpPage title="Create a new account" appName="App Name" onLoginBtnClick={onLoginBtnClick} />}
+            {
+                showLogin &&
+                <LoginPage
+                    title="Login to your account"
+                    appName="App Name"
+                    onCreateAccountBtnClick={onCreateAccountBtnClick} />
+            }
+            {
+                showSignUp &&
+                <SignUpPage
+                    title="Create a new account"
+                    appName="App Name"
+                    onLoginBtnClick={onLoginBtnClick} />
+            }
         </div>
     );
 }
+
+export default App;
 ```
 
 ## License

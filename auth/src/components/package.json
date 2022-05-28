@@ -25,6 +25,7 @@
     "homepage": "https://github.com/GabrielGamy/react-firebase-authentication#readme",
     "peerDependencies": {
         "react": "^18.1.0",
-        "react-dom": "^18.1.0"
+        "react-dom": "^18.1.0",
+        "firebase": "^9.8.2"
     }
 }

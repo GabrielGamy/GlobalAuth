@@ -1,9 +1,25 @@
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import AppLogo from './AppLogo';
 import SignInOptions from './SigInOptions';
 import style from './style';
+import User from './User';
 
 const LoginPage = (props) => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    if (!props.firebaseConfig) {
+        return <div style={{ textAlign: 'center' }}>Missing Firebase configurations.</div>
+    }
+
+    const onSubmit = () => {
+        const user = new User(props.firebaseConfig);
+        user.login(email, password, (response) => {
+            console.log('login: ', response);
+        })
+    }
+
     return (
         <div style={{ textAlign: 'center' }}>
             {props.title && <h1>{props.title}</h1>}
@@ -15,14 +31,28 @@ const LoginPage = (props) => {
                         <span>{props.appName}</span>
                     </div>
                     <h2 style={style.h2}>{props.signInText}</h2>
-                    <input style={style.input} type={'email'} placeholder={props.labels.email} aria-label={props.labels.email} />
-                    <input style={style.input} type={'password'} placeholder={props.labels.password} aria-label={props.labels.password} />
+                    <input
+                        style={style.input}
+                        type={'email'}
+                        placeholder={props.labels.email}
+                        aria-label={props.labels.email}
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)} />
+                    <input
+                        style={style.input}
+                        type={'password'}
+                        placeholder={props.labels.password}
+                        aria-label={props.labels.password}
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)} />
                     <div style={{ textAlign: 'left', marginBottom: 20 }}>
                         <span>{props.noAccountText} </span>
                         <button style={style.buttonLink} onClick={props.onCreateAccountBtnClick}>{props.createAccountText}</button>
                     </div>
                     <div style={style.boxFooter}>
-                        <button style={style.button}>{props.submitText}</button>
+                        <button
+                            style={style.button}
+                            onClick={onSubmit}>{props.submitText}</button>
                     </div>
                 </div>
             </div>
@@ -59,6 +89,15 @@ LoginPage.propTypes = {
         email: PropTypes.string,
         password: PropTypes.string,
     }),
-    onCreateAccountBtnClick: PropTypes.func
+    onCreateAccountBtnClick: PropTypes.func,
+    firebaseConfig: PropTypes.exact({
+        apiKey: PropTypes.string,
+        authDomain: PropTypes.string,
+        databaseURL: PropTypes.string,
+        projectId: PropTypes.string,
+        storageBucket: PropTypes.string,
+        messagingSenderId: PropTypes.string,
+        appId: PropTypes.string
+    }),
 }
 export default LoginPage;

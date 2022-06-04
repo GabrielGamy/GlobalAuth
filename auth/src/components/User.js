@@ -141,7 +141,7 @@ class User {
                     result
                 );
                 const expiresIn = this.getTokenExpiration(user.stsTokenManager);
-                callback({ result, expiresIn, credential });
+                callback({ success: true, result, expiresIn, credential });
             })
             .catch((error) => {
                 const email = this.firebaseAuth.currentUser.email;
@@ -182,7 +182,7 @@ class User {
                     result
                 );
                 const expiresIn = this.getTokenExpiration(user.stsTokenManager)
-                callback({ result, expiresIn, credential });
+                callback({ success: true, result, expiresIn, credential });
             })
             .catch((error) => {
                 const email = this.firebaseAuth.currentUser.email;
@@ -232,25 +232,25 @@ class User {
     getCommonError = (code) => {
         switch (code) {
             case 'INVALID_EMAIL':
-                return "L'adresse e-mail est mal formatée.";
+                return "Bad email format.";
             case 'MISSING_EMAIL':
-                return "L'adresse e-mail est invalide.";
+                return "Invalid email address.";
             case 'EMAIL_EXISTS':
-                return "L'adresse e-mail est déjà utilisée par un autre compte.";
+                return "Invalid email address.";
             case 'OPERATION_NOT_ALLOWED':
-                return 'La connexion par mot de passe est désactivée pour ce projet.';
+                return 'Operation not supported by the server (OPERATION_NOT_ALLOWED)';
             case 'TOO_MANY_ATTEMPTS_TRY_LATER':
-                return "Nous avons bloqué toutes les demandes de cet appareil en raison d'une activité inhabituelle. Réessayez plus tard.";
+                return "Too many attemps. Please try later!";
             case 'EMAIL_NOT_FOUND':
-                return "Il n'y a pas de fiche utilisateur correspondant à cet identifiant. L'utilisateur a peut-être été supprimé.";
+                return "Invalid email address or deleted.";
             case 'INVALID_PASSWORD':
-                return "Le mot de passe est invalide ou l'utilisateur n'a pas de mot de passe.";
+                return "Invalid email/password.";
             case 'MISSING_PASSWORD':
-                return "Le mot de passe est invalide ou l'utilisateur n'a pas de mot de passe.";
+                return "Invalid email/password.";
             case 'USER_DISABLED':
-                return 'Le compte utilisateur a été désactivé par un administrateur.';
+                return "Invalid email address or deactivated.";
             default:
-                return `Une erreur inhabituelle s'est produite ! Veuillez réessayer (code: ${code}).`;
+                return `An error occured. Please try later!.`;
         }
     };
 }

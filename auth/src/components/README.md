@@ -18,7 +18,11 @@ npm i @gabrielgamy/react-firebase-authentication
 - [Reactjs] - Reactjs Framework
 - [Firebase] - Firebase authentication
 
-## Usage
+## Usage (full usage example below)
+- Enable email/password authentication in Firebase
+- Enable Facebook and Google provider in your Firebase console page.
+- Change the props for the Login and SignUp page including the logo and app name.
+- Provide your FirebaseConfig in the Login and SignUp components
 
 ### Login
 ```
@@ -33,13 +37,18 @@ LoginPage.defaultProps = {
     otherOptionsText: 'Other Sign-in options',
     createAccountText: 'Create a new account',
     submitText: 'Submit',
+    missingFieldText: "Missing Field: ",
+    emailVerificationText: 'Please click the verification link sent to your email and then Login with your credentials.',
+    loginSuccessfulText: "Login completed. Redirecting to home page ...",
+    somethingWentWrong: "Something went wrong. Please try again!",
     labels: {
         email: 'Enter you email',
         password: 'Password',
     },
     onCreateAccountBtnClick: () => {
         alert('You must implement this action!')
-    }
+    },
+    showOtherSignInOptions: true
 };
 
 LoginPage.propTypes = {
@@ -51,11 +60,16 @@ LoginPage.propTypes = {
     otherOptionsText: PropTypes.string,
     createAccountText: PropTypes.string,
     submitText: PropTypes.string,
+    missingFieldText: PropTypes.string,
+    emailVerificationText: PropTypes.string,
+    loginSuccessfulText: PropTypes.string,
+    somethingWentWrong: PropTypes.string,
     labels: PropTypes.shape({
         email: PropTypes.string,
         password: PropTypes.string,
     }),
     onCreateAccountBtnClick: PropTypes.func,
+    showOtherSignInOptions: PropTypes.bool,
     firebaseConfig: PropTypes.exact({
         apiKey: PropTypes.string,
         authDomain: PropTypes.string,
@@ -64,7 +78,7 @@ LoginPage.propTypes = {
         storageBucket: PropTypes.string,
         messagingSenderId: PropTypes.string,
         appId: PropTypes.string
-    }),    
+    }),
 }
 ```
 
@@ -77,16 +91,21 @@ SignUpPage.defaultProps = {
     submitText: 'Submit',
     haveAnAccountText: "Already have an account?",
     loginText: "Login",
+    missingFieldText: "Missing Field: ",
+    emailVerificationText: 'Please click the verification link sent to your email and then Login with your credentials.',
+    signUpSuccessfulText: "Sign up completed. Redirecting to home page ...",
+    somethingWentWrong: "Something went wrong. Please try again!",
     labels: {
         firstName: 'First Name',
         lastName: 'Last Name',
-        email: 'Enter you email',
+        email: 'Your email',
         password: 'Password',
         confirmPassword: 'Password confirmation'
     },
     onLoginBtnClick: () => {
         alert('You must implement this action!');
-    }
+    },
+    showOtherSignInOptions: true
 };
 
 SignUpPage.propTypes = {
@@ -98,14 +117,20 @@ SignUpPage.propTypes = {
     haveAnAccountText: PropTypes.string,
     loginText: PropTypes.string,
     submitText: PropTypes.string,
+    missingFieldText: PropTypes.string,
+    emailVerificationText: PropTypes.string,
+    signUpSuccessfulText: PropTypes.string,
+    somethingWentWrong: PropTypes.string,
     labels: PropTypes.shape({
         firstName: PropTypes.string,
         lastName: PropTypes.string,
         email: PropTypes.string,
         password: PropTypes.string,
-        confirmPassword: PropTypes.string
+        confirmPassword: PropTypes.string,
     }),
     onLoginBtnClick: PropTypes.func,
+    showOtherSignInOptions: PropTypes.bool,
+    showFirstNameAndLastName: PropTypes.bool,
     firebaseConfig: PropTypes.exact({
         apiKey: PropTypes.string,
         authDomain: PropTypes.string,

@@ -76,7 +76,21 @@ const style = {
         display: 'flex',
         marginBottom: 8
     },
-
+    errorList: {
+        background: "#ff9999",
+        padding: "16px"
+    },
+    errorItem: {
+        background: "#ffe5e5",
+        color: "darkred",
+        padding: "5px",
+        marginLeft: "16px"
+    },
+    infoMessage: {
+        textAlign: 'left',
+        fontSize: '20px',
+        color: "green"
+    }
 };
 
 export default style;
